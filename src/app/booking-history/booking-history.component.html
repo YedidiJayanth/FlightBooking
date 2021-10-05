@@ -1,0 +1,33 @@
+<div style="margin-top:10%">
+    <div class="col-md-8">
+        <table class="table table-bordered">
+            <tr class="table-primary">
+                <th>Airline</th>
+                <th>Name</th>
+                <th>PNR Number</th>
+                <th>Name</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Seat Number</th>
+            </tr>
+            <tr *ngFor="let bl of bookingsList">
+                <td>
+                    <div class="col-1">
+                        <img style="width:30px" src="data:image/jpeg;base64,{{bl.logo}}" />
+                    </div>
+                </td>
+                <td>{{ bl.airlineName }}</td>
+                <td>{{ bl.pnr }}</td>
+                <td>{{ bl.name }}</td>
+                <td>{{ bl.from }}</td>
+                <td>{{ bl.to }}</td>
+                <td>{{ bl.seats }}</td>
+            </tr>
+            <tr *ngIf="bookingsList.length===0">
+                <td colspan="8" style="text-align: center;">
+                    No Data Available
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

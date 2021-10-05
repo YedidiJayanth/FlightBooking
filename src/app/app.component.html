@@ -1,0 +1,70 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<nav *ngIf="user" class="navbar navbar-yellow fixed-top navbar-expand-md custom-navbar navbar-dark">
+  <!-- <img class="navbar-brand" src="http://acmsocc.github.io/2016/assets/img/googlelogo_color_324x112dp.png" id="logo_custom" width="10%"  alt="logo"> -->
+  <a class="navbar-brand ml-3" href="#">
+    <img src="assets/logo.jpg" class="logo" alt="Airlines Logo">
+  </a>
+  <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse"
+    data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon "></span>
+  </button>
+  <div class="collapse navbar-collapse " id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto nav-menu-color">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['search']">Search Airlines</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['manage-bookings']">Manage Bookings</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['booking-history']">Booking History</a>
+
+      </li>
+      <li *ngIf="adminPriv" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="true">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a style="color:#444" class="nav-link"  [routerLink]="['manage-airlines-view']">Manage Airlines</a>
+          <a style="color:#444" class="nav-link"  [routerLink]="['manage-discounts']">Manage Discounts</a>
+          <a style="color:#444" class="nav-link"  [routerLink]="['manage-schedules']">Manage Schedules</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logOut()">Logout</a>
+      </li>
+      <!-- <li class="nav-item">
+              <a  class="nav-link" [routerLink]="['login']">Report</a>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" [routerLink]="['search']">Search Airlines</a>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#">Manage Bookings</a>
+             </li>  
+             <li class="nav-item">
+              <a class="nav-link" [routerLink]="['search']">Search Airlines</a>
+             </li>
+              
+             <li class="nav-item">
+               <a class="nav-link" href="#">Manage Bookings</a>
+            </li>
+            <li class="nav-item">   
+                <a class="nav-link" [routerLink]="['booking-history']">Booking History</a>
+            </li>
+            <li class="nav-item">    
+              <a class="nav-link" [routerLink]="['login']">Login</a>
+            </li>   -->
+    </ul>
+  </div>
+</nav>
+<div class="large-top">
+
+  <!-- <app-search></app-search> -->
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,75 @@
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Cheapflights<br> Schedule Flights</h2>
+        <p>Add Inventory from here to schedule.</p>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-10 col-sm-12">
+        <div class="login-form">
+            <form [formGroup]="inventoryForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Airline Name</label>
+                        <select type="text" class="form-control form-control-sm" placeholder="Airline"
+                            formControlName="airlineName" customValidateMessages controlID="#airlineNameError"
+                            (change)="airlineNameChange($event)">
+                            <option value="-1" selected disabled>Select Airline</option>
+                            <option *ngFor="let name of airlineNames" [value]="name.id">{{name.airlineName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Flight Number</label>
+                        <input type="number" formControlName="flightNumber" class="form-control" id="flightNumber"
+                            placeholder="Flight Number">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>From</label>
+                        <input type="text" formControlName="from" class="form-control" id="from" placeholder="From">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>To</label>
+                        <input type="text" formControlName="to" class="form-control" id="to" placeholder="To">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Start Date</label>
+                        <input type="date" formControlName="startDate" class="form-control" id="startDate">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>End Date</label>
+                        <input type="date" formControlName="endDate" class="form-control" id="endDate">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Start Time</label>
+                        <input type="time" formControlName="startTime" class="form-control" id="startTime">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>End Time</label>
+                        <input type="time" formControlName="endTime" class="form-control" id="endTime">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Instrument Name</label>
+                        <input type="text" formControlName="instrument" class="form-control" id="instrument"
+                            placeholder="name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Business Seats</label>
+                        <input type="number" formControlName="businessSeats" class="form-control" id="businessSeats"
+                            placeholder="seats">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Cost</label>
+                        <input type="number" formControlName="cost" class="form-control" id="cost" placeholder="cost">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Meal</label>
+                        <input type="text" formControlName="meal" class="form-control" id="meal" placeholder="meal">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="button" class="btn btn-danger" (click)="addInventory()">Add Inventory</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

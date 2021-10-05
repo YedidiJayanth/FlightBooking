@@ -1,0 +1,135 @@
+<div *ngIf="pdf" class="col-md-9" id="htmlData">
+    <div class="card">
+        <h3>{{data.name}}</h3>
+        <div class="card-body">
+            <div class="card w-95 mb-10 col-md-12 shadow-sm bg-light">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- <span class="" style="font-size: 1rem; position:absolute; transform : rotate(
+                            -90deg
+                            ); color:#666">Departure</span>  -->
+                        <div class="col-4">
+                            <img style="width: 50px;" src="data:image/png;base64,{{data.logo}}" />
+                            <label>{{ data.airlineName}}</label>
+                        </div>
+                        <div class="col-3">
+                            <li>{{data.from}}</li>
+                            <li>{{data.startTime}}</li>
+                            <li>{{data.startDate}}</li>
+                        </div>
+                        <div class="col-2">
+                            3h 25min
+                        </div>
+                        <div class="col-3">
+                            <li>{{data.to}}</li>
+                            <li>{{data.endTime}}</li>
+                            <li>{{data.endDate}}</li>
+                        </div>
+                        <div class="col-3">
+                            <li>{{data.cost}}</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div  class="card-body">
+            <div class="card w-95 mb-8 col-md-12 shadow-sm bg-light">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <img style="width: 30px;" src="data:image/png;base64," />
+                            <label></label>
+                        </div>
+                        <div class="col-3">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </div>
+                        <div class="col-2">
+                            3h 25min
+                        </div>
+                        <div class="col-3">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="card-body" style="background: #fffcc7;">
+            <div class="row" style="font-size: 0.614rem;
+                font-weight: normal;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: black;">
+                Important Note
+                -This is a special fare given by the airline. The airline does not allow partial cancellation.
+                <br>
+                <br>
+                Compulsory Guidelines for Passengers
+                <br>
+                <br>
+                -You need to certify your health status through Aarogya Setu app preactivated on your mobile or
+                self-declaration form.
+                <br>
+                -Face Mask is mandatory both at the airport & in flight.
+                <br>
+                -Failure to comply with Covid-19 protocols and the directions of ground staff and/or crew may
+                attract penal action against the concerned individual.
+                <br>
+                -Only passengers with confirmed web check-in will be allowed to enter 2 hours prior to the
+                flight departure.
+                <br>
+                -Only one check-in bag and cabin bag will be allowed per customer with a baggage tag affixed on
+                the bag.
+                <br>
+                -View all mandatory travel guidelines issued by Govt. of India here click here
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:10%">
+    <div class="col-md-8">
+        <table class="table table-bordered">
+            <tr class="table-primary">
+                <th>Airline</th>
+                <th>Name</th>
+                <th>PNR Number</th>
+                <th>Name</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Seat Number</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let bl of bookingsList">
+                <td>
+                    <div class="col-1">
+                        <img style="width:30px" src="data:image/jpeg;base64,{{bl.logo}}" />
+                    </div>
+                </td>
+                <td>{{ bl.airlineName }}</td>
+                <td>{{ bl.pnr }}</td>
+                <td>{{ bl.name }}</td>
+                <td>{{ bl.from }}</td>
+                <td>{{ bl.to }}</td>
+                <td>{{ bl.seats }}</td>
+                <td>
+                    <button style="color: #fff;
+                    background-color: #28a745;
+                    border-color: #28a745; " class="btn btn-success btn-xs mr-2" (click)="openPDF(bl)">Download
+                        PDF</button>
+                    <button style="color: #fff;
+                    background-color: #17a2b8;
+                    border-color: #17a2b8; " class="btn btn-info btn-xs" (click)="cancelTicket(bl)">
+                        Cancel Ticket
+                    </button>
+                </td>
+            </tr>
+            <tr *ngIf="bookingsList.length===0">
+                <td colspan="8" style="text-align: center;">
+                    No Data Available
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

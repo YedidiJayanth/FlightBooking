@@ -1,0 +1,48 @@
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Cheapflights<br> Apply Discounts</h2>
+        <p>Add Discount Code from here to apply.</p>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-10 col-sm-12">
+        <div class="login-form">
+            <form [formGroup]="discountForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Airline</label>
+                        <select type="text" class="form-control form-control-sm" placeholder="Airline"
+                            formControlName="airlineId" customValidateMessages controlID="#airlineIdError"
+                            (change)="airlineNameChange($event)">
+                            <option value="" selected disabled>Select Airline</option>
+                            <option *ngFor="let name of airlineNames" [value]="name.id">{{name.airlineName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Flight Number</label>
+                        <select type="text" class="form-control form-control-sm" placeholder="Flight Number"
+                            formControlName="flightNumber" customValidateMessages controlID="#flightNumberError"
+                            (change)="flightNumberChange($event)">
+                            <option value="" selected disabled>Select Flight Number</option>
+                            <option *ngFor="let name of flightNumbers" [value]="name.flightNumber">{{name.flightNumber}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Discount Code</label>
+                        <input type="text" formControlName="discountCode" class="form-control" id="discountCode"
+                            placeholder="Discount Code">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Discount Amount</label>
+                        <input type="text" formControlName="discountAmount" class="form-control" id="discountAmount"
+                            placeholder="Discount Amount">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="button" class="btn btn-danger" (click)="applyDiscount()">Apply Discount</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

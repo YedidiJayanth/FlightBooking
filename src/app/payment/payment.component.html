@@ -1,0 +1,104 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<div *ngIf="payment" class="container" style="margin-top: 10%;">
+    <div class="row">
+        <div class="paymentCont">
+            <div class="headingWrap">
+                <h3 class="headingTop text-center">Select Your Payment Method</h3>
+                <p class="text-center">Created with bootsrap button and using radio button</p>
+            </div>
+            <div class="paymentWrap">
+                <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
+                    <label class="btn paymentMethod active">
+                        <div class="method visa"></div>
+                        <input type="radio" name="options" checked>
+                    </label>
+                    <label class="btn paymentMethod">
+                        <div class="method master-card"></div>
+                        <input type="radio" name="options">
+                    </label>
+                    <label class="btn paymentMethod">
+                        <div class="method amex"></div>
+                        <input type="radio" name="options">
+                    </label>
+                    <label class="btn paymentMethod">
+                        <div class="method vishwa"></div>
+                        <input type="radio" name="options">
+                    </label>
+                    <label class="btn paymentMethod">
+                        <div class="method ez-cash"></div>
+                        <input type="radio" name="options">
+                    </label>
+
+                </div>
+            </div>
+            <div class="footerNavWrap clearfix">
+                <div class="btn btn-danger pull-left btn-fyi"><span class="glyphicon glyphicon-chevron-left"></span>
+                    Back to Booking</div>
+                <div class="btn btn-danger pull-right btn-fyi" (click)="continue()">Continue<span
+                    class="glyphicon glyphicon-chevron-right"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div *ngIf="form" class="container" style="margin-top: 10%;">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Payment Details
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" [formGroup]="paymentForm">
+                        <div class="form-group">
+                            <label for="cardNumber">
+                                CARD NUMBER</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="card" id="cardNumber" placeholder="Valid Card Number"
+                                    required autofocus />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">
+                                NAME ON THE CARD</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter Full Name"
+                                    required autofocus />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="expityMonth">
+                                        EXPIRY DATE</label>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" formControlName="month" id="expityMonth" placeholder="MM" required />
+                                    </div>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" id="expityYear" formControlName="year" placeholder="YY" required /></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cvCode">
+                                        CVV CODE</label>
+                                    <input type="password" class="form-control"  formControlName="cvv" id="cvCode" placeholder="CVV" required />
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href=""><span class="badge pull-right"><span class="glyphicon glyphicon-rupee pull-right"></span>Rs.{{ cost}}</span> Final Payment</a>
+                    </li>
+                </ul>
+                <br/>
+                <a class="btn btn-success btn-lg btn-block" role="button" (click)="bookTicket()">Pay</a>
+            </div>
+        </div>
+    </div>

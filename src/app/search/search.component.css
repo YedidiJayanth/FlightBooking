@@ -1,0 +1,21 @@
+.btn-danger {
+    height: 40px;   
+}
+
+.card {
+    height : 100px;
+    text-align: center;
+}
+
+input[type=checkbox] {
+    
+    margin-left: 100px;
+}
+.large-top
+{
+    margin-top: 15%;
+}
+.search-top
+{
+    margin-top: 10%;
+}

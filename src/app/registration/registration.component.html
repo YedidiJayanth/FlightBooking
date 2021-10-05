@@ -1,0 +1,52 @@
+<div class="sidenav">
+    <div class="login-main-text">
+       <h2>Cheapflights<br> Registration Page</h2>
+       <p>Login or register from here to access.</p>
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+        <form [formGroup]="registerForm" #registerFormElement>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input id="Full Name" formControlName="username" name="Full Name" placeholder="Full Name" class="form-control"
+                        type="text">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="password"  formControlName="password" class="form-control" id="inputEmail4" placeholder="password">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input id="email" name="email" placeholder="email" class="form-control"
+                        required="required" type="email">
+                </div>
+                <div class="form-group col-md-12">
+                    <textarea id="comment" name="comment" cols="40" rows="5" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2"
+                                required>
+                            <label class="form-check-label" for="invalidCheck2">
+                                <small>By clicking Submit, you agree to our Terms & Conditions, Visitor
+                                    Agreement and Privacy Policy.</small>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <button type="button" class="btn btn-danger" (click)="registerUser()">Submit</button>
+                <button type="button" class="btn btn-black" (click)="onLogin()">Login</button>
+            </div>
+        </form>
+       </div>
+    </div>
+ </div>

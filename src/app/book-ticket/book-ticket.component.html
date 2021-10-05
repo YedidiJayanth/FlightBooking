@@ -1,0 +1,173 @@
+<div class="container-fluid">
+    <div class="row" style="margin-top: 10%;">
+        <label style="font-size: 1.314rem;
+        font-weight: normal;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: black;">Review Your Booking</label>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card w-95 mb-10 col-md-12 shadow-sm bg-light">
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- <span class="" style="font-size: 1rem; position:absolute; transform : rotate(
+                                    -90deg
+                                    ); color:#666">Departure</span>  -->
+                                <div class="col-4">
+                                    <img style="width: 30px;" src="data:image/png;base64,{{logo}}" />
+                                    <label>{{airline}}</label>
+                                </div>
+                                <div class="col-3">
+                                    <li>{{ from }}</li>
+                                    <li> {{ startTime }}</li>
+                                    <li> {{ startDate }}</li>
+                                </div>
+                                <div class="col-2">
+                                </div>
+                                <div class="col-3">
+                                    <li>{{ to }}</li>
+                                    <li> {{ endTime }}</li>
+                                    <li> {{ endDate }}</li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="roundTripCard" class="card-body">
+                    <div class="card w-95 mb-8 col-md-12 shadow-sm bg-light">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img style="width: 30px;" src="data:image/png;base64,{{roundlogo}}" />
+                                    <label>{{roundairline}}</label>
+                                </div>
+                                <div class="col-3">
+                                    <li>{{ roundfrom }}</li>
+                                    <li> {{ roundstartTime }}</li>
+                                    <li> {{ roundstartDate }}</li>
+                                </div>
+                                <div class="col-2">
+                                </div>
+                                <div class="col-3">
+                                    <li>{{ roundto }}</li>
+                                    <li> {{ roundendTime }}</li>
+                                    <li> {{ roundendDate }}</li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" style="background: #fffcc7;">
+                    <div class="row" style="font-size: 0.614rem;
+                        font-weight: normal;
+                        font-family: Verdana, Geneva, Tahoma, sans-serif;
+                        color: black;">
+                        Important Note
+                        -This is a special fare given by the airline. The airline does not allow partial cancellation.
+                        <br>
+                        <br>
+                        Compulsory Guidelines for Passengers
+                        <br>
+                        <br>
+                        -You need to certify your health status through Aarogya Setu app preactivated on your mobile or
+                        self-declaration form.
+                        <br>
+                        -Face Mask is mandatory both at the airport & in flight.
+                        <br>
+                        -Failure to comply with Covid-19 protocols and the directions of ground staff and/or crew may
+                        attract penal action against the concerned individual.
+                        <br>
+                        -Only passengers with confirmed web check-in will be allowed to enter 2 hours prior to the
+                        flight departure.
+                        <br>
+                        -Only one check-in bag and cabin bag will be allowed per customer with a baggage tag affixed on
+                        the bag.
+                        <br>
+                        -View all mandatory travel guidelines issued by Govt. of India here click here
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label>Enter Traveller Details</label>
+                    </div>
+                    <form [formGroup]="ticketForm">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">No. of Passengers</label>
+                            <input type="email" class="form-control" formControlName="passengers" (change)="onChange()"
+                                id="exampleFormControlInput1" placeholder="Passengers">
+                        </div>
+                        <div class="pb-2 mt-0 bg-light p-2 global-border-top-1 global-border-bottom-1">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <h6 class="mb-0 mt-1">
+                                        Traveller Information</h6>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button class="btn btn-default btn-xs float-right" (click)="addUsers()"
+                                        [disabled]="disableadd">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                        <span class="hidden-mobile"> Add Passenger</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-editer mb-1">
+                                <tbody>
+                                    <tr formArrayName="users" *ngFor="let ac of UserControls.controls; let i = index;">
+
+                                        <td [formGroupName]="i">
+                                            <input class="form-control form-control-sm " type="text" placeholder="Name"
+                                                formControlName="name">
+                                        </td>
+                                        <td [formGroupName]="i">
+                                            <input class="form-control form-control-sm " type="text" placeholder="email"
+                                                formControlName="email">
+                                        </td>
+                                        <td [formGroupName]="i">
+                                            <input class="form-control form-control-sm " type="text" placeholder="meal"
+                                                formControlName="meal">
+                                        </td>
+                                        <td [formGroupName]="i">
+                                            <!-- <input class="form-control form-control-sm " type="text" placeholder="seat"
+                                                formControlName="seats"> -->
+                                            <select type="text" class="form-control form-control-sm"
+                                                placeholder="Select Seats" formControlName="seats"
+                                                
+                                                (change)="seat($event)">
+                                                <option value="" selected disabled>Select Seats</option>
+                                                <option *ngFor="let name of seats" [value]="name.value">
+                                                    {{name.value}}
+                                                </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <button class="btn btn-danger col-md-3" (click)="bookTicket()">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header text-right">
+                    <label style="font-weight: bold">
+                        Fare Details
+                    </label>
+                    <div class="card-title md-4">
+                        <label>Basic Fare : Rs. {{ cost }}</label><br>
+                        <label>Extra Tax : Rs. 250</label><br>
+                        <label>GST : Rs. 50</label><br>
+                        <input type="radio" (change)="onDiscountSelect()" class="" name="check"
+                            id="customCheck1"><label>Apply Discount : Rs. {{ discountCost }}</label>
+                        <label style="font-weight: bold">You Pay :</label> Rs. {{ cost }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

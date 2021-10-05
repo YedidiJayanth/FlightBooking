@@ -1,0 +1,48 @@
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Cheapflights<br> Airlines Registration</h2>
+        <p>Add Airlines from here to register.</p>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-10 col-sm-12">
+        <div class="login-form">
+            <div class="mb-3">
+                <button type="button" class="btn btn-danger" (click)="addAirline()">Add Airline</button>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                   <tr class="table-primary">   
+                    <th>Airline</th>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ar of airlinesList">
+                        <td>
+                            <div class="col-1">
+                                <img style="width:30px" src="data:image/jpeg;base64,{{ar.logo}}" />
+                            </div>
+                        </td>
+                        <td>{{ ar.airlineName }}</td>
+                        <td>{{ ar.contactNo}}</td>
+                        <td style="width:80%"><button class="btn btn-primary btn-xs mr-1" (click)="editAirline(ar)">
+                                Edit Airline
+                            </button>
+                            <button class="btn btn-danger btn-xs mr-1" (click)="blockAirline(ar)"
+                                [disabled]="ar.status==0?true:false">
+                                Block Airline
+                            </button>
+                            <button class="btn btn-success btn-xs mr-1" (click)="unblockAirline(ar)"
+                                [disabled]="ar.status==1?true:false">
+                                UnBlock Airline
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

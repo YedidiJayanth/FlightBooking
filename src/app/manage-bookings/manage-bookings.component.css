@@ -1,0 +1,17 @@
+li {
+    list-style-type: none;
+}
+
+.card-body{
+    font-size: 1.314rem;
+    font-weight: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+}
+
+.card-header{
+    font-size: 1.214rem;
+    font-weight: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+}
